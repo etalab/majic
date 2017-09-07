@@ -63,3 +63,5 @@ typings/
 /tmp
 /stuff
 /data
+
+.DS_Store
