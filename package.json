@@ -1,9 +1,11 @@
 {
   "name": "@etalab/majic",
-  "version": "0.1.0",
-  "description": "Adresses issues du cadastre",
+  "version": "0.1.0-dev",
+  "publishConfig": {
+    "access": "public"
+   },
   "main": "index.js",
-  "repository": "https://github.com/etalab/adresses-cadastre",
+  "repository": "https://github.com/etalab/majic",
   "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
   "license": "MIT",
   "scripts": {
