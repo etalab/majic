@@ -52,6 +52,21 @@ cat path/to/departements/XX/BATI.gz | zcat | majic2json > path/to/XX.ndjson
 
 ```bash
 cat path/to/departements/XX/BATI.gz | zcat | majic2adresses > path/to/XX.ndjson
+
+## Utilisation programmatique
+
+```js
+const {createReadStream} = require('fs')
+const {parse} = require('@etalab/majic')
+
+createReadStream('/path/to/BATI.gz')
+  .pipe(parse())
+  .on('data', local => {
+    // Traitement
+  })
+  .on('end', () => {
+    // Terminé
+  })
 ```
 
 ## Licence
