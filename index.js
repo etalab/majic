@@ -5,7 +5,7 @@ const split = require('split2')
 const {pipeline} = require('mississippi')
 
 exports.parse = function () {
-  return pipeline(
+  return pipeline.obj(
     split(),
     parse()
   )
