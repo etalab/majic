@@ -13,7 +13,6 @@
   },
   "bin": {
     "majic2json": "bin/majic2json.js",
-    "magic2adresses": "bin/majic2adresses.js",
     "majic-prepare": "bin/prepare-sources.js"
   },
   "dependencies": {

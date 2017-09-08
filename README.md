@@ -48,11 +48,6 @@ Les fichiers générés par la commande `majic-prepare` sont compressés. Il fau
 cat path/to/departements/XX/BATI.gz | zcat | majic2json > path/to/XX.ndjson
 ```
 
-### Extraction des pseudo-adresses issues de MAJIC
-
-```bash
-cat path/to/departements/XX/BATI.gz | zcat | majic2adresses > path/to/XX.ndjson
-
 ## Utilisation programmatique
 
 ```js
