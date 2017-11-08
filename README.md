@@ -45,16 +45,18 @@ majic-prepare sources/ destination/
 Les fichiers générés par la commande `majic-prepare` sont compressés. Il faut les décompresser à la volée.
 
 ```bash
-cat path/to/departements/XX/BATI.gz | zcat | majic2json > path/to/XX.ndjson
+zcat path/to/departements/XX/BATI.gz | majic2json > path/to/XX.ndjson
 ```
 
 ## Utilisation programmatique
 
 ```js
 const {createReadStream} = require('fs')
+const {createGunzip} = require('zlib')
 const {parse} = require('@etalab/majic')
 
 createReadStream('/path/to/BATI.gz')
+  .pipe(createGunzip())
   .pipe(parse())
   .on('data', local => {
     // Traitement
