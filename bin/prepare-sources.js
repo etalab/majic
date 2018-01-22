@@ -8,7 +8,7 @@ const {createGzip} = require('zlib')
 
 const execa = require('execa')
 const {dir} = require('tmp-promise')
-const Promise = require('bluebird')
+const bluebird = require('bluebird')
 const multistream = require('multistream')
 const {pipeline, pipe} = require('mississippi')
 const mkdirp = require('mkdirp')
@@ -39,7 +39,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
       const codeDepartement = getCodeDepartement(codeDirection)
       return {
         codeDepartement,
-        archivePath: join(providedArchivesPath, providedArchive),
+        archivePath: join(providedArchivesPath, providedArchive)
       }
     })
     .reduce((acc, providedArchive) => {
@@ -52,7 +52,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
       return acc
     }, {})
 
-  await Promise.each(Object.keys(departements), async codeDepartement => {
+  await bluebird.each(Object.keys(departements), async codeDepartement => {
     if (onlyDepartements && !onlyDepartements.includes(codeDepartement)) return
     const archivesPaths = departements[codeDepartement]
 
@@ -60,13 +60,13 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
     await mkdirpAsync(departementPath)
 
     const outputDatasets = {
-      BATI: createGzipWriteStream(join(departementPath, 'BATI.gz')),
+      BATI: createGzipWriteStream(join(departementPath, 'BATI.gz'))
       // LLOC: createGzipWriteStream(join(departementPath, 'LLOC.gz')),
       // PDLL: createGzipWriteStream(join(departementPath, 'PDLL.gz')),
     }
 
     const inputDatasets = {
-      BATI: [],
+      BATI: []
       // LLOC: [],
       // PDLL: [],
     }
@@ -94,7 +94,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
 
         finalArchiveContent
           .forEach(file => {
-            // const matchResult = file.match(/\.(BATI|LLOC|PDLL)\./)
+            // Const matchResult = file.match(/\.(BATI|LLOC|PDLL)\./)
             const matchResult = file.match(/\.(BATI)\./)
             if (matchResult) {
               const datasetName = matchResult[1]
@@ -109,7 +109,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
 
     await pipeAsync(multistream(inputDatasets.BATI), outputDatasets.BATI)
     console.log('  pumped BATI')
-    // await pipeAsync(multistream(inputDatasets.LLOC), outputDatasets.LLOC)
+    // Await pipeAsync(multistream(inputDatasets.LLOC), outputDatasets.LLOC)
     // console.log('  pumped LLOC')
     // await pipeAsync(multistream(inputDatasets.PDLL), outputDatasets.PDLL)
     // console.log('  pumped PDLL')
