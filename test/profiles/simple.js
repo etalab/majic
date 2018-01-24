@@ -16,7 +16,7 @@ test('example', async t => {
     codeParcelle: '54018000AB0117',
     numero: '14',
     libelleVoie: 'RUE PASTEUR',
-    codeVoie: '540180180',
+    codeVoie: '0180',
     batiment: 'A',
     etage: '00',
     entree: '01',
