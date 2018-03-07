@@ -30,6 +30,7 @@ test('example', async t => {
       'Garage',
       'Cave',
       'Grenier'
-    ]
+    ],
+    repetition: undefined
   })
 })
