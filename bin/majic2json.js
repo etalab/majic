@@ -5,6 +5,6 @@ const {serialize} = require('ndjson')
 const {parse} = require('../')
 
 process.stdin
-  .pipe(parse())
+  .pipe(parse({profile: 'simple'}))
   .pipe(serialize())
   .pipe(process.stdout)
