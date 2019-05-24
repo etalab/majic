@@ -2,11 +2,11 @@
 
 const split = require('split2')
 const {createGunzip} = require('gunzip-stream')
-const {pipeline} = require('mississippi')
+const pumpify = require('pumpify')
 const parse = require('./lib/parse')
 
 exports.parse = function (options) {
-  return pipeline.obj(
+  return pumpify.obj(
     createGunzip(),
     split(),
     parse(options)

@@ -5,12 +5,13 @@ const {resolve, join} = require('path')
 const {readdir, unlink, createReadStream, createWriteStream} = require('fs')
 const {promisify} = require('util')
 const {createGzip} = require('zlib')
+const {pipeline} = require('stream')
 
 const execa = require('execa')
 const {dir} = require('tmp-promise')
 const bluebird = require('bluebird')
 const multistream = require('multistream')
-const {pipeline, pipe} = require('mississippi')
+const pumpify = require('pumpify')
 const mkdirp = require('mkdirp')
 const rimraf = require('rimraf')
 const program = require('commander')
@@ -19,7 +20,7 @@ const readdirAsync = promisify(readdir)
 const unlinkAsync = promisify(unlink)
 const mkdirpAsync = promisify(mkdirp)
 const rimrafAsync = promisify(rimraf)
-const pipeAsync = promisify(pipe)
+const pipelineAsync = promisify(pipeline)
 
 const version = require('../package.json')
 
@@ -33,7 +34,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
 
   const departements = providedArchives
     .map(providedArchive => {
-      const res = providedArchive.match(/([0-9]{1}[0-9AB]{1}[0-9]{1})/i)
+      const res = providedArchive.match(/(\d{1}[0-9AB]{1}\d{1})/i)
       if (!res) return null
       const codeDirection = res[1].toUpperCase()
       const codeDepartement = getCodeDepartement(codeDirection)
@@ -47,8 +48,10 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
         if (!(providedArchive.codeDepartement in acc)) {
           acc[providedArchive.codeDepartement] = []
         }
+
         acc[providedArchive.codeDepartement].push(providedArchive.archivePath)
       }
+
       return acc
     }, {})
 
@@ -107,7 +110,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
       })
     )
 
-    await pipeAsync(multistream(inputDatasets.BATI), outputDatasets.BATI)
+    await pipelineAsync(multistream(inputDatasets.BATI), outputDatasets.BATI)
     console.log('  pumped BATI')
     // Await pipeAsync(multistream(inputDatasets.LLOC), outputDatasets.LLOC)
     // console.log('  pumped LLOC')
@@ -132,7 +135,7 @@ function decompress(archivePath, destPath) {
 }
 
 function createGzipWriteStream(path) {
-  return pipeline(
+  return pumpify(
     createGzip(),
     createWriteStream(path)
   ).on('error', boom)

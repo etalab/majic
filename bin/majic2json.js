@@ -2,7 +2,7 @@
 'use strict'
 
 const {serialize} = require('ndjson')
-const {parse} = require('../')
+const {parse} = require('..')
 
 process.stdin
   .pipe(parse({profile: 'simple'}))
