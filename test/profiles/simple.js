@@ -1,10 +1,10 @@
 const {join} = require('path')
 const test = require('ava')
-const loadJsonFile = require('load-json-file')
+const {readJson} = require('fs-extra')
 const createLocal = require('../../lib/profiles/simple/local')
 
 function loadFixture(fileName) {
-  return loadJsonFile(join(__dirname, '..', 'fixtures', fileName))
+  return readJson(join(__dirname, '..', 'fixtures', fileName))
 }
 
 test('example', async t => {

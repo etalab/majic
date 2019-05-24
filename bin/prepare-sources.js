@@ -2,7 +2,7 @@
 'use strict'
 
 const {resolve, join} = require('path')
-const {readdir, unlink, createReadStream, createWriteStream} = require('fs')
+const {createReadStream, createWriteStream} = require('fs')
 const {promisify} = require('util')
 const {createGzip} = require('zlib')
 const {pipeline} = require('stream')
@@ -12,14 +12,9 @@ const {dir} = require('tmp-promise')
 const bluebird = require('bluebird')
 const multistream = require('multistream')
 const pumpify = require('pumpify')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
+const {mkdirp, remove, readdir} = require('fs-extra')
 const program = require('commander')
 
-const readdirAsync = promisify(readdir)
-const unlinkAsync = promisify(unlink)
-const mkdirpAsync = promisify(mkdirp)
-const rimrafAsync = promisify(rimraf)
 const pipelineAsync = promisify(pipeline)
 
 const version = require('../package.json')
@@ -28,9 +23,9 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
   destPath = resolve(destPath)
   providedArchivesPath = resolve(providedArchivesPath)
 
-  await rimrafAsync(destPath)
+  await remove(destPath)
 
-  const providedArchives = await readdirAsync(providedArchivesPath)
+  const providedArchives = await readdir(providedArchivesPath)
 
   const departements = providedArchives
     .map(providedArchive => {
@@ -60,7 +55,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
     const archivesPaths = departements[codeDepartement]
 
     const departementPath = join(destPath, 'departements', codeDepartement)
-    await mkdirpAsync(departementPath)
+    await mkdirp(departementPath)
 
     const outputDatasets = {
       BATI: createGzipWriteStream(join(departementPath, 'BATI.gz'))
@@ -89,7 +84,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
             .map(async containedArchive => {
               const containedArchivePath = join(tempDir.path, containedArchive)
               await decompress(containedArchivePath, tempDir.path)
-              await unlinkAsync(containedArchivePath)
+              await remove(containedArchivePath)
             })
         )
 
