@@ -77,7 +77,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
         console.timeEnd('  extracted ' + archivePath)
 
         // Eventually decompress contained archives
-        const archiveContent = await readdirAsync(tempDir.path)
+        const archiveContent = await readdir(tempDir.path)
         await Promise.all(
           archiveContent
             .filter(file => file.toLowerCase().endsWith('.zip'))
@@ -88,7 +88,7 @@ async function prepareSources(providedArchivesPath, destPath, onlyDepartements) 
             })
         )
 
-        const finalArchiveContent = await readdirAsync(tempDir.path)
+        const finalArchiveContent = await readdir(tempDir.path)
 
         finalArchiveContent
           .forEach(file => {
