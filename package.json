@@ -17,15 +17,15 @@
     "majic-prepare": "bin/prepare-sources.js"
   },
   "dependencies": {
-    "bluebird": "^3.5.5",
-    "commander": "^3.0.0",
-    "execa": "^2.0.4",
+    "bluebird": "^3.7.2",
+    "commander": "^4.1.1",
+    "execa": "^4.0.0",
     "fs-extra": "^8.1.0",
     "gunzip-stream": "^1.0.1",
     "lodash": "^4.17.15",
     "multistream": "^4.0.0",
     "ndjson": "^1.5.0",
-    "pumpify": "^2.0.0",
+    "pumpify": "^2.0.1",
     "split2": "^3.1.1",
     "tmp-promise": "^2.0.2"
   },
