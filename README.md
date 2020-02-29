@@ -7,7 +7,7 @@ Scripts permettant d'extraire les données MAJIC au format NDJSON.
 
 ## Prérequis
 
-* [Node.js](https://nodejs.org) >= 8
+* [Node.js](https://nodejs.org) >= 10
 * Pour France entière : environ 20 Go d'espace disponible (5 Go pour les fichiers sources, 10 Go pour l'espace de travail, 5 Go pour les données résultantes)
 
 ## Installation
