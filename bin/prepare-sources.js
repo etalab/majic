@@ -122,7 +122,7 @@ function getCodeDepartement(codeDirection) {
   if (codeDirection.startsWith('13')) return '13'
   if (codeDirection.startsWith('59')) return '59'
   if (codeDirection.startsWith('75')) return '75'
-  return codeDirection.substr(0, 2)
+  return codeDirection.slice(0, 2)
 }
 
 function decompress(archivePath, destPath) {
