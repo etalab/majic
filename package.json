@@ -30,7 +30,7 @@
     "tmp-promise": "^2.0.2"
   },
   "devDependencies": {
-    "ava": "^2.3.0",
+    "ava": "^3.4.0",
     "xo": "^0.24.0"
   },
   "xo": {
