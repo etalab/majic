@@ -13,7 +13,7 @@ Scripts permettant d'extraire les données MAJIC au format NDJSON.
 ## Installation
 
 ```bash
-npm install @etalab/majic -g
+yarn
 ```
 
 ## Récupération des fichiers MAJIC
