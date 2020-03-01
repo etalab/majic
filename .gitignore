@@ -65,3 +65,5 @@ typings/
 /data
 
 .DS_Store
+
+majic.sqlite

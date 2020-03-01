@@ -27,22 +27,31 @@ Les données sources doivent être récupérées auprès des services de la DGFi
 
 Actuellement la production des fichiers se déroule en 2 étapes, via 2 commandes.
 
-### Préparation des fichiers MAJIC
+### Décompression des archives auto-extractibles (le cas échéant)
 
-Tout d'abord la commande `prepare` explore le dossier contenant les archives MAJIC par direction, les décompresse dans le dossier de destination et fusionne les données par département.
+Les fichiers MAJIC sont fréquemment mis à disposition sous forme d’archives auto-extractibles (sous Windows).
+
+Vous devez décompresser ces archives et placer tous les fichiers résultants dans un répertoire unique, par exemple un dossier `./data`.
+
+Sous Mac ou sous Linux, vous pouvez utiliser les outils `find` et `unar`. Par exemple :
+
+```bash
+find /path/to/*.exe -exec unar -D -f -o data/ {} \;
+```
+
+Les fichiers résultants ont l’extension `zip` ou `gz`.
+
+### Import des fichiers MAJIC
+
+Tout d'abord la commande `import-data` explore le dossier contenant les fichiers MAJIC par direction, et les charge dans la base SQLite `majic.sqlite`, par code commune et code fichier (`BATI`, `NBAT`, `PROP`, `PDLL`, `LLOT`).
 
 Pour France entière l'opération ne prend que quelques minutes sur une machine moyenne.
 
 ```bash
-majic-prepare sources/ destination/
+yarn import-data
 ```
 
-* `sources/` : dossier contenant les archives MAJIC telles que fournies par l'administration
-* `destination/` : dossier qui contiendra les données rangées par département
-
 ### Extraction des données MAJIC et production des fichiers NDJSON
-
-Les fichiers générés par la commande `majic-prepare` sont compressés (gzip).
 
 ```bash
 cat path/to/departements/XX/BATI.gz | majic2json > path/to/XX.ndjson
