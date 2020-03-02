@@ -39,6 +39,14 @@ function getCodeCommune(row) {
   return codeCommune.trim()
 }
 
+function joinStream(separator = '\n') {
+  return new Transform({
+    transform(item, enc, cb) {
+      cb(null, item + separator)
+    }
+  })
+}
+
 async function importFile(fileType, sourceFilePath) {
   let currentCommune
   let rows = []
@@ -48,8 +56,8 @@ async function importFile(fileType, sourceFilePath) {
       return
     }
 
-    const data = await getStream(
-      intoStream(rows).pipe(createGzip())
+    const data = await getStream.buffer(
+      intoStream(rows).pipe(joinStream()).pipe(createGzip())
     )
 
     const key = `${fileType}-${currentCommune}`
