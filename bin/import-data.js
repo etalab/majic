@@ -32,11 +32,7 @@ const sourcesPath = getSourcesPath()
 const db = new Keyv('sqlite://majic.sqlite')
 
 function getCodeCommune(row) {
-  const codeCommune = row.startsWith('97') ?
-    '97' + row.slice(4, 6) :
-    row.slice(0, 2) + row.slice(3, 6)
-
-  return codeCommune.trim()
+  return (row.slice(0, 2) + row.slice(3, 6)).trim()
 }
 
 function joinStream(separator = '\n') {
