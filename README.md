@@ -53,20 +53,18 @@ yarn import-data
 
 ## Utilisation
 
-## Utilisation programmatique
+La variable d'environnement `MAJIC_PATH` doit être renseignée de manière à pointer vers le fichier généré à l'étape précédente.
+
+### Accéder aux données d'une commune
 
 ```js
-const {createReadStream} = require('fs')
-const {parse} = require('@etalab/majic')
+const {getCommuneData} = require('@etalab/majic')
 
-createReadStream('/path/to/BATI.gz')
-  .pipe(parse())
-  .on('data', local => {
-    // Traitement
-  })
-  .on('end', () => {
-    // Terminé
-  })
+// Données brutes
+await getCommuneData('54084')
+
+// Données simplifiées
+await getCommuneData('54084', {profile: 'simple})
 ```
 
 ## Licence
