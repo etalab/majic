@@ -51,11 +51,7 @@ Pour France entière l'opération ne prend que quelques minutes sur une machine 
 yarn import-data
 ```
 
-### Extraction des données MAJIC et production des fichiers NDJSON
-
-```bash
-cat path/to/departements/XX/BATI.gz | majic2json > path/to/XX.ndjson
-```
+## Utilisation
 
 ## Utilisation programmatique
 
