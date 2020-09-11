@@ -15,18 +15,18 @@
   },
   "dependencies": {
     "@keyv/sqlite": "^2.0.2",
-    "get-stream": "^5.1.0",
+    "get-stream": "^6.0.0",
     "gunzip-stream": "^1.0.1",
-    "into-stream": "^5.1.1",
-    "keyv": "^4.0.0",
-    "lodash": "^4.17.15",
+    "into-stream": "^6.0.0",
+    "keyv": "^4.0.1",
+    "lodash": "^4.17.20",
     "pumpify": "^2.0.1",
-    "split2": "^3.1.1"
+    "split2": "^3.2.2"
   },
   "devDependencies": {
-    "ava": "^3.4.0",
+    "ava": "^3.12.1",
     "bluebird": "^3.7.2",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.1",
     "xo": "^0.27.2"
   },
   "xo": {
