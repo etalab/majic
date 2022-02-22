@@ -16,17 +16,17 @@
   "dependencies": {
     "@livingdata/keyv": "^4.1.0",
     "@livingdata/keyv-sqlite": "^2.1.0",
-    "get-stream": "^6.0.0",
+    "get-stream": "^6.0.1",
     "gunzip-stream": "^1.0.1",
     "into-stream": "^6.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "pumpify": "^2.0.1",
-    "split2": "^3.2.2"
+    "split2": "^4.1.0"
   },
   "devDependencies": {
-    "ava": "^3.12.1",
+    "ava": "^4.0.1",
     "bluebird": "^3.7.2",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^10.0.0",
     "xo": "^0.33.1"
   },
   "xo": {
