@@ -125,10 +125,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@keyv/sqlite@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@keyv/sqlite/-/sqlite-3.0.0.tgz#24934a0a40a084488666020ec087cce6f50ac77a"
-  integrity sha512-dbo7smkbCp/z9k5iPILlN9OIqCP0AKQ0mPK6C6hbTsOo0kEE9CnJQQbFQngtF3ylO5c0QqWTw7MlglCxsiOzhA==
+"@keyv/sqlite@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@keyv/sqlite/-/sqlite-3.0.1.tgz#d3f025a38aa95c37710364a6cfcc02b9d938308e"
+  integrity sha512-dFcHiDEK/PB3oG+1eRKfpNAzwzWYegJTBgyc9barqGGxiO1CiBeH6fbDJNxdAvONivF122Zgc39mwQP5dS3Zrg==
   dependencies:
     better-sqlite3 "^7.5.0"
 
@@ -201,6 +201,11 @@
     "@types/events" "*"
     "@types/minimatch" "*"
     "@types/node" "*"
+
+"@types/json-buffer@~3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/json-buffer/-/json-buffer-3.0.0.tgz#85c1ff0f0948fc159810d4b5be35bf8c20875f64"
+  integrity sha512-3YP80IxxFJB4b5tYC2SUPwkg0XQLiu0nWvhRgEatgjf+29IcWO9X1k8xRv5DGssJ/lCrjYTjQPcobJr2yWIVuQ==
 
 "@types/json-schema@^7.0.3":
   version "7.0.4"
@@ -1132,6 +1137,14 @@ component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
+
+compress-brotli@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/compress-brotli/-/compress-brotli-1.3.6.tgz#64bd6f21f4f3e9841dbac392f4c29218caf5e9d9"
+  integrity sha512-au99/GqZtUtiCBliqLFbWlhnCxn+XSYjwZ77q6mKN4La4qOXDoLVPZ50iXr0WmAyMxl8yqoq3Yq4OeQNPPkyeQ==
+  dependencies:
+    "@types/json-buffer" "~3.0.0"
+    json-buffer "~3.0.1"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -3088,7 +3101,7 @@ json-buffer@3.0.0:
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
   integrity sha1-Wx85evx11ne96Lz8Dkfh+aPZqJg=
 
-json-buffer@3.0.1:
+json-buffer@3.0.1, json-buffer@~3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.1.tgz#9338802a30d3b6605fbe0613e094008ca8c05a13"
   integrity sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==
@@ -3137,11 +3150,12 @@ keyv@^3.0.0:
   dependencies:
     json-buffer "3.0.0"
 
-keyv@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.1.1.tgz#02c538bfdbd2a9308cc932d4096f05ae42bfa06a"
-  integrity sha512-tGv1yP6snQVDSM4X6yxrv2zzq/EvpW+oYiUz6aueW1u9CtS8RzUQYxxmFwgZlO2jSgCxQbchhxaqXXp2hnKGpQ==
+keyv@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.2.2.tgz#4b6f602c0228ef4d8214c03c520bef469ed6b768"
+  integrity sha512-uYS0vKTlBIjNCAUqrjlxmruxOEiZxZIHXyp32sdcGmP+ukFrmWUnE//RcPXJH3Vxrni1H2gsQbjHE0bH7MtMQQ==
   dependencies:
+    compress-brotli "^1.3.6"
     json-buffer "3.0.1"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:

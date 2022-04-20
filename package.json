@@ -14,11 +14,11 @@
     "import-data": "node bin/import-data data/"
   },
   "dependencies": {
-    "@keyv/sqlite": "^3.0.0",
+    "@keyv/sqlite": "^3.0.1",
     "get-stream": "^6.0.1",
     "gunzip-stream": "^1.0.1",
     "into-stream": "^6.0.0",
-    "keyv": "^4.1.1",
+    "keyv": "^4.2.2",
     "lodash": "^4.17.21",
     "pumpify": "^2.0.1",
     "split2": "^4.1.0"
