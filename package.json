@@ -27,13 +27,19 @@
     "ava": "^4.0.1",
     "bluebird": "^3.7.2",
     "fs-extra": "^10.0.0",
-    "xo": "^0.33.1"
+    "xo": "^0.48.0"
   },
   "xo": {
     "semicolon": false,
     "space": 2,
     "rules": {
-      "curly": "off"
+      "curly": "off",
+      "comma-dangle": ["error", "never"],
+      "unicorn/prefer-module": "off",
+      "unicorn/import-style": "off",
+      "unicorn/no-array-for-each": "off",
+      "import/extensions": "off",
+      "node/prefer-global/process": "off"
     }
   },
   "engines": {
