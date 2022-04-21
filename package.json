@@ -14,7 +14,7 @@
     "import-data": "node bin/import-data data/"
   },
   "dependencies": {
-    "@keyv/sqlite": "^3.0.1",
+    "@keyv/sqlite": "^3.5.0",
     "get-stream": "^6.0.1",
     "gunzip-stream": "^1.0.1",
     "into-stream": "^6.0.0",
