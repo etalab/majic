@@ -39,7 +39,7 @@ Sous Mac ou sous Linux, vous pouvez utiliser les outils `find` et `unar`. Par ex
 find /path/to/*.exe -exec unar -D -f -o data/ {} \;
 ```
 
-Les fichiers résultants ont l’extension `zip` ou `gz`.
+Les fichiers résultants sont des fichiers texte à largeur fixe. Ils peuvent être en clair ou compressés via `gzip`.
 
 ### Import des fichiers MAJIC
 
