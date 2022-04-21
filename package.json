@@ -24,9 +24,9 @@
     "split2": "^4.1.0"
   },
   "devDependencies": {
-    "ava": "^4.0.1",
+    "ava": "^4.2.0",
     "bluebird": "^3.7.2",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^10.1.0",
     "xo": "^0.48.0"
   },
   "xo": {
@@ -34,7 +34,10 @@
     "space": 2,
     "rules": {
       "curly": "off",
-      "comma-dangle": ["error", "never"],
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
       "unicorn/prefer-module": "off",
       "unicorn/import-style": "off",
       "unicorn/no-array-for-each": "off",
